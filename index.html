@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Leonor Nunes de Carvalho | Portfolio</title>
+    <meta name="description" content="Portfolio of Leonor Nunes de Carvalho, MSc candidate in Computer Science and Engineering (Instituto Superior Técnico) and Medicine student (NOVA Medical School), focused on AI, Data Science and Computational Biology.">
+    <meta property="og:title" content="Leonor Nunes de Carvalho | Portfolio">
+    <meta property="og:description" content="Computer Science & Engineering MSc candidate and Medicine student, interested in the intersection of computational biology, data analytics and personalised healthcare.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'aurora-green': '#00ffaa',
+                        'aurora-cyan': '#00ffff',
+                        'aurora-blue': '#00aaff',
+                        'aurora-purple': '#aa00ff',
+                        'aurora-lighter-purple': '#d000ff',
+                        'aurora-pink': '#ff00aa',
+                        'aurora-orange': '#ff5500',
+                        'aurora-yellow': '#ffaa00',
+                        'hov-col': '#67e8f9',
+                        'dark-bg': '#0a0e1a',
+                        'dark-card': '#1a1f2e',
+                        'dark-border': '#2a2f3e'
+                    },
+                    animation: {
+                        'aurora': 'aurora 15s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        aurora: {
+                            '0%, 100%': {
+                                backgroundPosition: '0% 50%',
+                                backgroundSize: '200% 200%'
+                            },
+                            '50%': {
+                                backgroundPosition: '100% 50%',
+                                backgroundSize: '200% 200%'
+                            }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        glow: {
+                            '0%, 100%': {
+                                boxShadow: '0 0 5px rgba(0, 255, 170, 0.5), 0 0 20px rgba(0, 255, 170, 0.3)'
+                            },
+                            '50%': {
+                                boxShadow: '0 0 20px rgba(0, 170, 255, 0.8), 0 0 40px rgba(0, 170, 255, 0.4)'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Aurora gradient background */
+        .aurora-bg {
+            background: linear-gradient(-45deg, #0a0e1a, #1a0033, #002244, #001a33);
+            background-size: 400% 400%;
+            animation: aurora 15s ease infinite;
+        }
+
+        /* Aurora light effect overlay */
+        .aurora-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            background:
+                radial-gradient(ellipse at top left, rgba(0, 255, 170, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at top right, rgba(0, 170, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at bottom left, rgba(170, 0, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at bottom right, rgba(255, 0, 170, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0e1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #00ffaa, #00aaff);
+            border-radius: 5px;
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #00ffaa 0%, #00aaff 50%, #aa00ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Card hover effect */
+        .card-hover {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .card-hover:hover {
+            border-color: hov-col;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 170, 0.2);
+        }
+
+        /* Progress bar animation */
+        @keyframes progressAnimation {
+            0% { width: 0%; }
+        }
+
+        .progress-bar {
+            animation: progressAnimation 2s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-200 aurora-bg">
+    <!-- Aurora overlay effect -->
+    <div class="aurora-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-dark-bg/90 backdrop-blur-md border-b border-dark-border z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold gradient-text">LNC</div>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="#home" class="hover:hov-col transition">Home</a></li>
+                    <li><a href="#about" class="hover:hov-col transition">About</a></li>
+                    <li><a href="#education" class="hover:hov-col transition">Education</a></li>
+                    <li><a href="#experience" class="hover:hov-col transition">Experience</a></li>
+                    <li><a href="#activities" class="hover:hov-col transition">Leadership</a></li>
+                    <li><a href="#projects" class="hover:hov-col transition">Projects</a></li>
+                    <li><a href="#skills" class="hover:hov-col transition">Skills</a></li>
+                    <li><a href="#areas-of-interest" class="hover:hov-col transition">Interests</a></li>
+                    <li><a href="#contact" class="hover:hov-col transition">Contact</a></li>
+                </ul>
+                <!-- Mobile menu button -->
+                <button class="md:hidden" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#home" class="block py-2 hover:text-hov-col">Home</a>
+                <a href="#about" class="block py-2 hover:text-hov-col">About</a>
+                <a href="#education" class="block py-2 hover:text-hov-col">Education</a>
+                <a href="#experience" class="block py-2 hover:text-hov-col">Experience</a>
+                <a href="#activities" class="block py-2 hover:text-hov-col">Leadership</a>
+                <a href="#projects" class="block py-2 hover:text-hov-col">Projects</a>
+                <a href="#skills" class="block py-2 hover:text-hov-col">Skills</a>
+                <a href="#areas-of-interest" class="block py-2 hover:text-hov-col">Interests</a>
+                <a href="#contact" class="block py-2 hover:text-hov-col">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative">
+        <div class="container mx-auto px-6 text-center z-10">
+            <div class="animate-slide-up">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    Hi, I'm <span class="gradient-text">Leonor Nunes de Carvalho</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 mb-8">Computer Science &amp; Engineering MSc Candidate &amp; Medical Student | AI, Data Science &amp; Computational Biology</p>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12">
+                    Turning complex biomedical data into meaningful biological and clinical insights.
+                    Exploring how computational approaches can support a more precise, efficient and personalised healthcare.
+                
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#experience" class="px-8 py-3 bg-gradient-to-r from-aurora-green to-aurora-blue rounded-full text-dark-bg font-semibold hover:shadow-lg hover:shadow-aurora-green/50 transition transform hover:scale-105">
+                        View My Experience
+                    </a>
+                    <a href="CV_LNC.pdf" class="px-8 py-3 border-2 border-aurora-green rounded-full hover:bg-aurora-green hover:text-dark-bg transition transform hover:scale-105">
+                        Download CV
+                    </a>
+                </div>
+                <div class="mt-12 flex justify-center space-x-6">
+                    <a href="mailto:leonorncarvalho@tecnico.ulisboa.pt" aria-label="Email" class="text-2xl hover:text-aurora-green transition"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/leonorncarvalho/" class="text-2xl hover:text-aurora-blue transition"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/leonor-carvalho" class="text-2xl hover:text-aurora-purple transition"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Animated particles -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute w-2 h-2 bg-aurora-green rounded-full animate-float" style="top: 20%; left: 10%;"></div>
+            <div class="absolute w-2 h-2 bg-aurora-blue rounded-full animate-float" style="top: 60%; left: 80%; animation-delay: 1s;"></div>
+            <div class="absolute w-2 h-2 bg-aurora-purple rounded-full animate-float" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
+            <div class="absolute w-2 h-2 bg-aurora-pink rounded-full animate-float" style="top: 80%; left: 30%; animation-delay: 3s;"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="container mx-auto px-6">
+
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+                About Me
+            </h2>
+
+            <div class="max-w-6xl mx-auto">
+
+                <!-- Text + Photo -->
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                    <!-- Text -->
+                    <div class="space-y-6">
+
+                        <p class="text-gray-400 leading-relaxed">
+                            I am currently completing my Master's degree in Computer Science and Engineering
+                            at Instituto Superior Técnico, focusing on Artificial Intelligence, Data Science,
+                            and Computational Biology, and I am also studying Medicine at NOVA Medical School.
+                            Before that, I studied Biomedical Engineering, which is
+                            where my interest in combining biology and computation started.
+                            Since then, I have worked on projects involving synthetic clinical data,
+                            computational genomics, and biological data analysis. These experiences made me
+                            especially interested in using computational tools to solve problems in biology
+                            and healthcare.
+                            I am also a Teaching Assistant for Computational Biology at IST for the second time,
+                            where I help Master's students work with statistical and computational methods for
+                            biological data.
+                        </p>
+
+                        <p class="text-gray-400 leading-relaxed">
+                            Outside my academic work, I have been involved in student organisations, mentoring,
+                            outreach, and technical coordination. These experiences made me enjoy collaborative
+                            environments where I can combine technical work with communication, teamwork,
+                            and responsibility.
+                        </p>
+
+                    </div>
+
+                    <!-- Photo -->
+                    <div class="relative flex justify-center md:justify-end">
+
+                        <div class="w-80 h-80 rounded-full
+                                    bg-gradient-to-br
+                                    from-aurora-green
+                                    via-aurora-blue
+                                    to-aurora-purple
+                                    p-1">
+
+                            <div class="w-full h-full rounded-full bg-dark-bg">
+                                <img
+                                    src="images/profile_pic.jpg"
+                                    alt="Leonor Nunes de Carvalho"
+                                    class="w-full h-full object-cover rounded-full"
+                                >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Highlight Cards -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
+
+                    <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
+                        <div class="text-3xl font-bold text-aurora-green">
+                            2× TA
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            Computational Biology
+                        </div>
+                    </div>
+
+                    <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
+                        <div class="text-3xl font-bold text-aurora-blue">
+                            MSc
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            Computer Science · IST
+                        </div>
+                    </div>
+
+                    <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
+                        <div class="text-2xl font-bold text-aurora-purple">
+                            Research Scholarship
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            INESC-ID · FRAIL Project
+                        </div>
+                    </div>
+
+                    <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
+                        <div class="text-2xl font-bold text-aurora-pink">
+                            Bio + CS
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            Academic Background
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-dark-card/30">
+        <div class="container mx-auto px-6">
+
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+                Education
+            </h2>
+
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+
+                <!-- MSc -->
+                <div class="bg-dark-card p-6 rounded-lg border border-dark-border">
+                    <h3 class="text-xl font-semibold text-aurora-green mb-1">
+                        <i class="fas fa-graduation-cap mr-2"></i>MSc in Computer Science and Engineering
+                    </h3>
+                    <p class="text-gray-300 text-sm mb-3">Instituto Superior Técnico · Aug 2024 – Present · Current average 17.0/20</p>
+                    <p class="text-gray-400 text-sm mb-3">
+                        Specialisations: Artificial Intelligence, Bioinformatics &amp; Computational Biology
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        <span class="text-gray-300 font-medium">Thesis:</span> Epigenomic Signatures in Renal Cancer:
+                        Exploring the Predictive and Regulatory Roles of Understudied Markers · Expected completion 2026
+                    </p>
+                </div>
+
+                <!-- Medicine -->
+                <div class="bg-dark-card p-6 rounded-lg border border-dark-border">
+                    <h3 class="text-xl font-semibold text-aurora-blue mb-1">
+                        <i class="fas fa-stethoscope mr-2"></i>Integrated Master's in Medicine
+                    </h3>
+                    <p class="text-gray-300 text-sm mb-3">NOVA Medical School · Sep 2024 – Present · Current average 15.6/20</p>
+                </div>
+
+                <!-- BSc -->
+                <div class="bg-dark-card p-6 rounded-lg border border-dark-border">
+                    <h3 class="text-xl font-semibold text-aurora-purple mb-1">
+                        <i class="fas fa-flask mr-2"></i>BSc in Biomedical Engineering
+                    </h3>
+                    <p class="text-gray-300 text-sm mb-3">Instituto Superior Técnico · Sep 2021 – Feb 2024 · Final average 17.4/20</p>
+                    <p class="text-gray-400 text-sm">
+                        <span class="text-gray-300 font-medium">Final project:</span> A Novel Human-Machine Interface
+                        for Surgical Flow Disruption Prevention 
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        Final grade: 19/20
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-dark-card/30">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Experience</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Teaching Assistant -->
+                <div class="relative pl-8 border-l-2 border-aurora-green">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-green rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-aurora-green">Teaching Assistant · Computational Biology</h3>
+                            <span class="text-sm text-gray-400">2025 and 2026 (2 editions)</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">Instituto Superior Técnico</p>
+                        <p class="text-gray-400">
+                            Lead lab sessions on sequence alignment, probabilistic models, statistical learning for omics and
+                            clinical datasets, and computational functional genomics. Support Master's students with Python and R,
+                            data analysis workflows and the biological interpretation of results, and evaluate lab reports,
+                            assignments and exams with constructive feedback.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hospital CUF Tejo -->
+                <div class="relative pl-8 border-l-2 border-aurora-blue">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-blue rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
+                            <h3 class="text-xl font-semibold text-aurora-blue">Pre-Clinical Summer Intern</h3>
+                            <span class="text-sm text-gray-400">Summer 2026</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">Hospital CUF Tejo · PecliCUF Program</p>
+                        <p class="text-gray-400">
+                            Rotated through angiography, cardiology and the medical-surgical inpatient ward, seeing up close
+                            how diagnostic and clinical workflows operate across different care settings. Observed cardiology
+                            diagnostic exams, including exercise stress test, Holter , ambulatory blood pressure
+                            monitoring, angiography and medical imaging, and explored how exams are selected and interpreted
+                            in clinical practice, with their indications, advantages and limitations.
+                        </p>
+                    </div>
+                </div>
+
+                <!--  Research Scholarship -->
+                <div class="relative pl-8 border-l-2 border-aurora-purple">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-purple rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                     <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-aurora-purple">Research Scholarship</h3>
+                            <span class="text-sm text-gray-400">Nov 2025 – Jan 2026</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">INESC-ID · FRAIL Project</p>
+                        <p class="text-gray-400">
+                            Worked on the development of deep learning pipelines leveraging longitudinal health data for
+                            knowledge extraction and medical decision support, and investigated understudied molecular markers
+                            and pharmacological covariates using statistical approaches, as part of my Master's thesis research.
+                        </p>   
+                    </div>
+                </div>
+
+                <!-- Hospital da Luz -->
+                <div class="relative pl-8 border-l-2 border-aurora-pink">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-pink rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-aurora-pink">Summer Intern</h3>
+                            <span class="text-sm text-gray-400">Jul 2024 – Aug 2024</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">Hospital da Luz · Learning Health</p>
+                        <p class="text-gray-400">
+                            Developed a synthetic data generation pipeline from OMOP-converted clinical records to enable
+                            privacy-preserving healthcare analytics, fine-tuned and evaluated language models (GPT-2 and Gemma 2)
+                            for synthetic healthcare record generation, and designed statistical validation frameworks to
+                            assess data quality, predictive utility and privacy preservation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hospital de Santa Maria -->
+                <div class="relative pl-8 border-l-2 border-aurora-orange">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-orange rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
+                            <h3 class="text-xl font-semibold text-aurora-orange">Summer Intern</h3>
+                            <span class="text-sm text-gray-400">Aug 2022</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">Gastroenterology Unit · Hospital de Santa Maria (CHULN)</p>
+                        <p class="text-gray-400">
+                            Observed endoscopic imaging and therapeutic procedures, exploring the role of endoscopic
+                            technologies in diagnosis, intervention and clinical decision-making.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- Leadership & Activities Section -->
+<section id="activities" class="py-20">
+    <div class="container mx-auto px-6">
+
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+            Leadership &amp; Student Organisations
+        </h2>
+
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+        <!-- Informatics Coordinator -->
+        <div class="bg-dark-card rounded-lg border border-dark-border overflow-hidden card-hover">
+
+            <!-- Image -->
+            <img
+                src="images/NEBM_informatics.png"
+                alt="Biomedical Engineering Student Group Informatics Coordinator"
+                class="w-full h-48 object-cover"
+            >
+
+            <!-- Content -->
+            <div class="p-6">
+
+                <h3 class="text-lg font-semibold text-aurora-green mb-1">
+                    Informatics Department Coordinator
+                </h3>
+
+                <p class="text-gray-300 text-sm mb-3">
+                    Biomedical Engineering Student Group (NEBM-IST) · 2025 – 2026
+                </p>
+
+                <p class="text-gray-400">
+                    Coordinated the association's digital infrastructure: developed its website, provided
+                    technical support and organised academic resources for Biomedical Engineering students.
+                </p>
+
+            </div>
+        </div>
+
+        <!-- Biomed Summer Camp -->
+            <div class="bg-dark-card rounded-lg border border-dark-border overflow-hidden card-hover">
+
+                <!-- Media -->
+                <a
+                    href="https://www.instagram.com/reel/DMTTdmvs7AF/?utm_source=ig_web_button_share_sheet"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative block group"
+                >
+                    <img
+                        src="images/biomed_summer_camp.jpg"
+                        alt="Biomed Summer Camp"
+                        class="w-full h-48 object-cover"
+                    >
+
+                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/45
+                                transition flex items-center justify-center">
+                        <div class="w-14 h-14 rounded-full bg-white/90
+                                    flex items-center justify-center">
+                            <i class="fas fa-play text-dark-bg"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Content -->
+                <div class="p-6">
+
+                    <h3 class="text-lg font-semibold text-aurora-blue mb-1">
+                        Pedagogical Department &amp; Staff
+                    </h3>
+
+                    <p class="text-gray-300 text-sm mb-3">
+                        Biomed Summer Camp · 2025
+                    </p>
+
+                    <p class="text-gray-400 mb-4">
+                        Co-built the first edition of the Biomedical Engineering Summer Camp for 16 students, 
+                        contributing to the programme, coordinating with faculty as part of the pedagogical team, 
+                        and supporting students throughout the event week. 
+                        In my role as a Computational Biology Teaching Assistant at IST, I also delivered a workshop 
+                        introducing students to computational approaches in biology.
+                    </p>
+
+                    <a
+                        href="https://www.instagram.com/reel/DMTTdmvs7AF/?utm_source=ig_web_button_share_sheet"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-aurora-blue hover:text-hov-col transition"
+                    >
+                        <i class="fab fa-instagram mr-2"></i>
+                        Watch aftermovie
+                    </a>
+
+                </div>
+            </div>
+
+
+            
+            <!-- External Relations -->
+            <div class="bg-dark-card rounded-lg border border-dark-border overflow-hidden card-hover">
+
+                <!-- Media -->
+                <a
+                    href="https://www.instagram.com/reel/C864FUqIfrG/?utm_source=ig_web_button_share_sheet"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative block group"
+                >
+                    <img
+                        src="images/biomedical_interviews.png"
+                        alt="Biomedical Engineering student interviews"
+                        class="w-full h-48 object-cover"
+                    >
+
+                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/45
+                                transition flex items-center justify-center">
+                        <div class="w-14 h-14 rounded-full bg-white/90
+                                    flex items-center justify-center">
+                            <i class="fas fa-play text-dark-bg"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Content -->
+                <div class="p-6">
+
+                    <h3 class="text-lg font-semibold text-aurora-purple mb-1">
+                        External Relations Collaborator
+                    </h3>
+
+                    <p class="text-gray-300 text-sm mb-3">
+                        Biomedical Engineering Student Group (NEBM-IST) · 2023 – 2024
+                    </p>
+
+                    <p class="text-gray-400 mb-4">
+                        Worked on external relations for the Biomedical Engineering Student Group, supporting partnerships with companies
+                        and creating opportunities for students. I helped organise two talks with senior industry speakers and
+                        networking initiatives, shared summer internship opportunities, and produced student interviews about the degree and their
+                        experiences.
+                    </p>
+
+                    <a
+                        href="https://www.instagram.com/reel/C864FUqIfrG/?utm_source=ig_web_button_share_sheet"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-aurora-purple hover:text-hov-col transition"
+                    >
+                        <i class="fab fa-instagram mr-2"></i>
+                        Watch the interviews
+                    </a>
+
+                </div>
+            </div>
+
+        <!-- Student Mentor -->
+        <div class="bg-dark-card rounded-lg border border-dark-border overflow-hidden card-hover">
+
+            <!-- Image -->
+            <img
+                src="images/mentor.jpeg"
+                alt="Student Mentor"
+                class="w-full h-48 object-cover"
+            >
+
+            <!-- Content -->
+            <div class="p-6">
+
+                <h3 class="text-lg font-semibold text-aurora-pink mb-1">
+                    Student Mentor
+                </h3>
+
+                <p class="text-gray-300 text-sm mb-3">
+                    NAPE-IST · 2021 – 2024
+                </p>
+
+                <p class="text-gray-400">
+                    Mentored 33+ undergraduate, Master's, and mobility students over three years, supporting their integration into academic life at IST.
+                    This included both Portuguese and international students, at different stages of their studies.
+                </p>
+
+            </div>
+        </div>
+
+        <!-- Jury Member -->
+        <div class="bg-dark-card rounded-lg border border-dark-border overflow-hidden card-hover
+            md:col-span-2 md:w-1/2 md:mx-auto">
+
+            <!-- Image -->
+            <img
+                src="images/hult_prize.jpg"
+                alt="Jury Member"
+                class="w-full h-48 object-cover"
+            >
+
+            <!-- Content -->
+            <div class="p-6">
+
+                <h3 class="text-lg font-semibold text-aurora-orange mb-1">
+                    Jury Member
+                </h3>
+
+                <p class="text-gray-300 text-sm mb-3">
+                    Hult Prize Local Competition, ISEG · 2026
+                </p>
+
+                <p class="text-gray-400">
+                    Joined the jury for the 2026 Hult Prize Local Competition at ISEG, evaluating student startup pitches and discussing their ideas, feasibility and potential impact.
+            </div>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+  <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-dark-card/30">
+        <div class="container mx-auto px-6">
+
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+                Selected Projects
+            </h2>
+
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-6">
+
+                <!-- MSc Thesis -->
+                <!-- (update once the thesis is concluded) -->
+                <div class="bg-dark-card p-6 rounded-lg card-hover flex flex-col">
+                    <div class="text-sm text-gray-400 mb-2">MSc Thesis · Instituto Superior Técnico · 2026</div>
+                    <h3 class="text-lg font-semibold text-aurora-green mb-3">
+                        Epigenomic Signatures in Renal Cancer:  Exploring the predictive and regulatory roles of understudied markers in renal cancer
+                    </h3>
+                    <p class="text-gray-400 mb-4 flex-grow">
+                        Developing a computational epigenomics framework to characterise DNA methylation alterations across renal cell carcinoma subtypes using TCGA data. 
+                        The project integrates differential methylation analysis, clinical and survival characterisation, machine learning for tumour and 
+                        clinical phenotype prediction, and functional enrichment to identify biologically and clinically relevant epigenetic signatures.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-aurora-green/20 text-aurora-green rounded-full">Epigenomics</span>
+                        <span class="px-3 py-1 text-sm bg-aurora-green/20 text-aurora-green rounded-full">TCGA</span>
+                        <span class="px-3 py-1 text-sm bg-aurora-green/20 text-aurora-green rounded-full">Machine Learning</span>
+                        <span class="px-3 py-1 text-sm bg-aurora-green/20 text-aurora-green rounded-full">Enrichment Analysis</span>
+                    </div>
+                </div>
+
+
+                <!-- Biostatistics Project -->
+                <div class="bg-dark-card p-6 rounded-lg card-hover flex flex-col">
+                    <div class="text-sm text-gray-400 mb-2">
+                        Academic Group Project · Biostatistics
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-aurora-blue mb-3">
+                        Environmental Risk & Cardiovascular Events
+                    </h3>
+
+                    <p class="text-gray-400 mb-4 flex-grow">
+                        Investigated whether the Portuguese ÍCARO and FRIESA thermal-risk indices could help explain
+                        variations in ST-elevation myocardial infarction and stroke cases. Combined exploratory analysis,
+                        statistical regression, model diagnostics and XGBoost, while assessing the impact of demographic,
+                        temporal and spatial factors on model performance.
+                    </p>
+                    <a
+                        href="https://github.com/leonor-carvalho/temperature-cv-impact"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-aurora-blue hover:text-hov-col transition"
+                    >
+                        <i class="fab fa-github mr-2"></i>
+                        View on GitHub
+                    </a>
+                    
+
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 text-sm bg-aurora-blue/20 text-aurora-blue rounded-full">
+                            Biostatistics
+                        </span>
+                        <span class="px-3 py-1 text-sm bg-aurora-blue/20 text-aurora-blue rounded-full">
+                            Regression
+                        </span>
+                        <span class="px-3 py-1 text-sm bg-aurora-blue/20 text-aurora-blue rounded-full">
+                            XGBoost
+                        </span>
+                        <span class="px-3 py-1 text-sm bg-aurora-blue/20 text-aurora-blue rounded-full">
+                            Public Health
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Applied Omics Project -->
+                <div class="bg-dark-card p-6 rounded-lg card-hover flex flex-col">
+                    <div class="text-sm text-gray-400 mb-2">
+                        Academic Group Project · Computational Biology
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-aurora-purple mb-3">
+                        Kidney Cancer Transcriptomics Analysis
+                    </h3>
+
+                    <p class="text-gray-400 mb-4 flex-grow">
+                        Analysed TCGA kidney cancer transcriptomic and clinical data, covering RNA-seq quality control,
+                        gene expression quantification and normalisation, PCA, differential expression, pathway enrichment
+                        and survival analysis. We also derived a gene-expression signature using Lasso and trained an SVM
+                        to distinguish renal cancer subtypes, achieving 88.9% accuracy.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-aurora-purple/20 text-aurora-purple rounded-full">
+                            RNA-seq
+                        </span>
+                        <span class="px-3 py-1 text-sm bg-aurora-purple/20 text-aurora-purple rounded-full">
+                            TCGA
+                        </span>
+                        <span class="px-3 py-1 text-sm bg-aurora-purple/20 text-aurora-purple rounded-full">
+                            Differential Expression
+                        </span>
+                        <span class="px-3 py-1 text-sm bg-aurora-purple/20 text-aurora-purple rounded-full">
+                            Survival Analysis
+                        </span>
+                        <span class="px-3 py-1 text-sm bg-aurora-purple/20 text-aurora-purple rounded-full">
+                            Machine Learning
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Foraging-Sim -->
+                <div class="bg-dark-card p-6 rounded-lg card-hover flex flex-col">
+                    <div class="text-sm text-gray-400 mb-2">Academic Group Project · GitHub</div>
+                    <h3 class="text-lg font-semibold text-aurora-pink mb-3">
+                        Foraging-Sim: Multi-Agent Evolution Simulation
+                    </h3>
+                    <p class="text-gray-400 mb-4 flex-grow">
+                        Reimplemented and extended an agent-based model of competing foraging strategies, based on Kim et al. (2025).
+                        Developed a modular simulation framework for agent behaviour, resource dynamics, evolutionary traits,
+                        experiment execution and statistical analysis.
+                    </p>
+                    <a
+                        href="https://github.com/PrometheosFire/foraging-sim"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-aurora-pink hover:text-hov-col transition"
+                    >
+                        <i class="fab fa-github mr-2"></i>
+                        View on GitHub
+                    </a>
+                </div>
+                
+                <!-- Natural Language Processing Project -->
+                <div class="bg-dark-card p-6 rounded-lg card-hover flex flex-col">
+                    <div class="text-sm text-gray-400 mb-2">
+                        Academic Group Project · Natural Language Processing
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-aurora-orange mb-3">
+                        Movie Genre Classification with NLP
+                    </h3>
+
+                    <p class="text-gray-400 mb-4 flex-grow">
+                        Built a text classification pipeline to predict movie genres from metadata and plot descriptions.
+                        Explored text preprocessing, synonym-based data augmentation, TF-IDF representations and
+                        hyperparameter tuning, comparing Support Vector Machines and Multinomial Naive Bayes.
+                        The best SVM model achieved 70.3% classification accuracy.
+                    </p>
+
+                    <a
+                        href="https://github.com/goncalo-jp-carvalho/LN-proj"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-aurora-orange hover:text-hov-col transition"
+                    >
+                        <i class="fab fa-github mr-2"></i>
+                        View on GitHub
+                    </a>
+
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 text-sm bg-aurora-pink/20 text-aurora-pink rounded-full">
+                            NLP
+                        </span>
+                        <span class="px-3 py-1 text-sm bg-aurora-pink/20 text-aurora-pink rounded-full">
+                            TF-IDF
+                        </span>
+                        <span class="px-3 py-1 text-sm bg-aurora-pink/20 text-aurora-pink rounded-full">
+                            SVM
+                        </span>
+                        <span class="px-3 py-1 text-sm bg-aurora-pink/20 text-aurora-pink rounded-full">
+                            Data Augmentation
+                        </span>
+                    </div>
+                </div>
+
+                <!-- BSc Final Project -->
+                <div class="bg-dark-card p-6 rounded-lg card-hover flex flex-col">
+                    <div class="text-sm text-gray-400 mb-2">BSc Final Project · Instituto de Telecomunicações · Sep 2023 – Jan 2024 · 19/20</div>
+                    <h3 class="text-lg font-semibold text-aurora-yellow mb-3">
+                        A Novel Human-Machine Interface for Surgical Flow Disruption Prevention
+                    </h3>
+                    <p class="text-gray-400 mb-4 flex-grow">
+                        Explored an augmented reality human-machine interface designed to reduce information-related
+                        disruptions and improve safety in surgical environments. Developed and integrated biometric data
+                        acquisition components, combining hardware and software for physiological signal processing and analysis.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-aurora-yellow/20 text-aurora-yellow rounded-full">Augmented Reality</span>
+                        <span class="px-3 py-1 text-sm bg-aurora-yellow/20 text-aurora-yellow rounded-full">Biomedical Signals</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16">
+        <div class="container mx-auto px-6">
+
+            <h2 class="text-4xl font-bold text-center mb-10 gradient-text">
+                Technical Skills
+            </h2>
+
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Programming -->
+                <div class="bg-dark-card p-6 rounded-lg border border-dark-border">
+                    <h3 class="text-xl font-semibold text-aurora-green mb-4">
+                        Programming
+                    </h3>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-aurora-green/20 text-aurora-green rounded-full">
+                            Python
+                        </span>
+                        <span class="px-3 py-1 bg-aurora-green/20 text-aurora-green rounded-full">
+                            R
+                        </span>
+                        <span class="px-3 py-1 bg-aurora-green/20 text-aurora-green rounded-full">
+                            MATLAB
+                        </span>
+                        <span class="px-3 py-1 bg-aurora-green/20 text-aurora-green rounded-full">
+                            HTML
+                        </span>
+                    </div>
+                </div>
+
+                <!-- AI -->
+                <div class="bg-dark-card p-6 rounded-lg border border-dark-border">
+                    <h3 class="text-xl font-semibold text-aurora-blue mb-4">
+                        Data Science &amp; AI 
+                    </h3>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-aurora-blue/20 text-aurora-blue rounded-full">
+                            Machine Learning
+                        </span>
+                        <span class="px-3 py-1 bg-aurora-blue/20 text-aurora-blue rounded-full">
+                            Deep Learning
+                        </span>
+                        <span class="px-3 py-1 bg-aurora-blue/20 text-aurora-blue rounded-full">
+                            Statistical Analysis
+                        </span>
+                        <span class="px-3 py-1 bg-aurora-blue/20 text-aurora-blue rounded-full">
+                            Data Visualisation
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Computational Biology -->
+                <div class="bg-dark-card p-6 rounded-lg border border-dark-border">
+                    <h3 class="text-xl font-semibold text-aurora-purple mb-4">
+                        Computational Biology
+                    </h3>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-aurora-purple/20 text-aurora-purple rounded-full">
+                            Multi-omics
+                        </span>
+                        <span class="px-3 py-1 bg-aurora-purple/20 text-aurora-purple rounded-full">
+                            Biological Data Analysis
+                        </span>
+                        <span class="px-3 py-1 bg-aurora-purple/20 text-aurora-purple rounded-full">
+                            Computational Genomics
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Biomedical Sciences -->
+                <div class="bg-dark-card p-6 rounded-lg border border-dark-border">
+                    <h3 class="text-xl font-semibold text-aurora-pink mb-4">
+                        Biomedical Sciences
+                    </h3>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-aurora-pink/20 text-aurora-pink rounded-full">
+                            Molecular &amp; Cellular Biology
+                        </span>
+                        <span class="px-3 py-1 bg-aurora-pink/20 text-aurora-pink rounded-full">
+                            Physiology
+                        </span>
+                        <span class="px-3 py-1 bg-aurora-pink/20 text-aurora-pink rounded-full">
+                            Biochemistry
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Areas of Interest -->
+    <section id="areas-of-interest" class="py-16">
+        <div class="container mx-auto px-6">
+
+            <h2 class="text-4xl font-bold text-center mb-10 gradient-text">
+                Areas of Interest
+            </h2>
+
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+
+                <!-- AI for Healthcare -->
+                <div class="bg-dark-card p-6 rounded-lg card-hover text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full
+                                bg-gradient-to-br from-aurora-green to-aurora-blue
+                                flex items-center justify-center">
+                        <i class="fas fa-brain text-2xl text-dark-bg"></i>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-3">
+                        AI for Healthcare
+                    </h3>
+
+                    <p class="text-gray-400">
+                        Applying machine learning and deep learning to clinical
+                        and biomedical data.
+                    </p>
+                </div>
+
+                <!-- Computational Biology -->
+                <div class="bg-dark-card p-6 rounded-lg card-hover text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full
+                                bg-gradient-to-br from-aurora-blue to-aurora-purple
+                                flex items-center justify-center">
+                        <i class="fas fa-dna text-2xl text-dark-bg"></i>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-3">
+                        Computational Biology
+                    </h3>
+
+                    <p class="text-gray-400">
+                        Using computational and statistical methods to study
+                        biological and molecular data.
+                    </p>
+                </div>
+
+                <!-- Biomedical Data Science -->
+                <div class="bg-dark-card p-6 rounded-lg card-hover text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full
+                                bg-gradient-to-br from-aurora-purple to-aurora-pink
+                                flex items-center justify-center">
+                        <i class="fas fa-chart-line text-2xl text-dark-bg"></i>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-3">
+                        Biomedical Data Science
+                    </h3>
+
+                    <p class="text-gray-400">
+                        Turning complex health and biological data into
+                        useful and interpretable information.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages, Volunteering & Awards -->
+    <section id="more" class="py-16">
+        <div class="container mx-auto px-6">
+
+            <h2 class="text-4xl font-bold text-center mb-10 gradient-text">
+                Languages, Volunteering &amp; Awards
+            </h2>
+
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+
+                <!-- Languages -->
+                <div class="bg-dark-card p-6 rounded-lg border border-dark-border">
+                    <h3 class="text-xl font-semibold text-aurora-blue mb-4">
+                        <i class="fas fa-language mr-2"></i>Languages
+                    </h3>
+
+                    <ul class="space-y-2 text-gray-400">
+                        <li><span class="text-gray-300 font-medium">Portuguese</span> · Native</li>
+                        <li><span class="text-gray-300 font-medium">English</span> · Fluent</li>
+                        <li><span class="text-gray-300 font-medium">French</span> · Basic</li>
+                        <li><span class="text-gray-300 font-medium">Spanish</span> · Basic</li>
+                    </ul>
+                </div>
+
+                <!-- Volunteering & tutoring -->
+                <div class="bg-dark-card p-6 rounded-lg border border-dark-border">
+                    <h3 class="text-xl font-semibold text-aurora-purple mb-4">
+                        <i class="fas fa-hands-helping mr-2"></i>Volunteering &amp; Tutoring
+                    </h3>
+
+                    <ul class="space-y-2 text-gray-400">
+                        <li><span class="text-gray-300 font-medium">Banco Alimentar Contra a Fome</span> · Volunteer, yearly since 2018</li>
+                        <li><span class="text-gray-300 font-medium">Missão País</span> · Volunteer, yearly since 2022</li>
+                        <li><span class="text-gray-300 font-medium">Web Summit</span> · Event volunteer, Nov 2024</li>
+                        <li><span class="text-gray-300 font-medium">Private Tutor</span> · Maths, Physics &amp; Chemistry, Sep 2021 – Jan 2025</li>
+                    </ul>
+                </div>
+
+                <!-- Awards & training -->
+                <div class="bg-dark-card p-6 rounded-lg border border-dark-border">
+                    <h3 class="text-xl font-semibold text-aurora-pink mb-4">
+                        <i class="fas fa-award mr-2"></i>Awards &amp; Training
+                    </h3>
+
+                    <ul class="space-y-2 text-gray-400">
+                        <li><span class="text-gray-300 font-medium">Academic Merit Diploma</span> · Instituto Superior Técnico, Dec 2022</li>
+                        <li><span class="text-gray-300 font-medium">FCE (B2) &amp; English Courses </span> · British Council, 2013-2018</li>
+                        <li><span class="text-gray-300 font-medium">Data Science: KDD Process</span> · MOOC-IST, Jan 2024</li>
+                        <li><span class="text-gray-300 font-medium">Machine Learning, Maths &amp; Ethics: Hands-on</span> · MOOC-IST, Apr 2023</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-dark-card/30">
+        <div class="container mx-auto px-6">
+
+            <h2 class="text-4xl font-bold text-center mb-10 gradient-text">
+                Get In Touch
+            </h2>
+
+            <div class="max-w-4xl mx-auto">
+
+                <div class="grid md:grid-cols-2 gap-10">
+
+                    <!-- Contact Info -->
+                    <div class="space-y-6">
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full
+                                        bg-gradient-to-br from-aurora-green to-aurora-blue
+                                        flex items-center justify-center">
+                                <i class="fas fa-envelope text-dark-bg"></i>
+                            </div>
+
+                            <div>
+                                <p class="text-gray-400">Email</p>
+                                <p>leonorncarvalho@tecnico.ulisboa.pt</p>
+                            </div>
+                        </div>
+
+                      
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full
+                                        bg-gradient-to-br from-aurora-purple to-aurora-pink
+                                        flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-dark-bg"></i>
+                            </div>
+
+                            <div>
+                                <p class="text-gray-400">Location</p>
+                                <p>Lisbon, Portugal</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form class="space-y-4">
+                        <input
+                            type="text"
+                            placeholder="Your Name"
+                            class="w-full px-4 py-3 bg-dark-card border border-dark-border
+                                rounded-lg focus:outline-none focus:border-aurora-green"
+                        >
+
+                        <input
+                            type="email"
+                            placeholder="Your Email"
+                            class="w-full px-4 py-3 bg-dark-card border border-dark-border
+                                rounded-lg focus:outline-none focus:border-aurora-green"
+                        >
+
+                        <textarea
+                            placeholder="Your Message"
+                            rows="4"
+                            class="w-full px-4 py-3 bg-dark-card border border-dark-border
+                                rounded-lg focus:outline-none focus:border-aurora-green"
+                        ></textarea>
+
+                        <button
+                            type="submit"
+                            class="w-full px-8 py-3
+                                bg-gradient-to-r from-aurora-green to-aurora-blue
+                                rounded-lg text-dark-bg font-semibold
+                                hover:shadow-lg hover:shadow-aurora-green/50
+                                transition transform hover:scale-105"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 border-t border-dark-border">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-4">
+                <a href="mailto:leonorncarvalho@tecnico.ulisboa.pt" aria-label="Email" class="text-2xl mx-2 hover:text-aurora-green transition"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/leonorncarvalho/" class="text-2xl mx-2 hover:text-aurora-blue transition"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/leonor-carvalho" class="text-2xl mx-2 hover:text-aurora-purple transition"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
